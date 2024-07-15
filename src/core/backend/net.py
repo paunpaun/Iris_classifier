@@ -1,3 +1,16 @@
+#
+#
+#
+#
+#
+#   OLD VERSION NO MATRICES NO NUMPY !!!!
+#
+#
+#
+#
+#
+#
+
 import random
 
 class Neuron:

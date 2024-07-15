@@ -1,27 +1,83 @@
-from core.backend.net import MLP
-from core.backend.functions import Sigmoid,Mse
+import numpy as np
+import pandas as pd
+from core.backend.neural_net import MLP
+from core.backend.functions import Sigmoid, ReLU, Leaky_ReLU, Softmax, CategoricalCrossEntropy, Mse 
 
-mse = Mse()
+
+# activation functions
 sigmoid = Sigmoid()
-mlp = MLP(4,[5,5,2], sigmoid)
+relu = ReLU()
+leaky_relu = Leaky_ReLU()
+softmax = Softmax()
 
-inputs = [2.0, 3.0, -1.0, 0.5]
-targets = [1.0,0.0]
+# loss functions
+cce = CategoricalCrossEntropy()
+mse = Mse()
 
-lr = 0.1
+# data loading
+iris_url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+attributes = ["sepal_length", "sepal_width", "petal_length", "petal_width", "class"]
+df = pd.read_csv(iris_url, header=None, names=attributes)
 
-for _ in range(100):
+# data prep
+X = df.iloc[:, :-1].values
+y = df.iloc[:, -1].values
 
-    output = mlp(inputs)
+# one-hot encoding
+y = pd.get_dummies(y).values
 
-    loss = mse(output, targets)
+# split data
+split_index = int(0.8 * len(X))
+indices = np.random.permutation(len(X))
+X_train, X_test = X[indices[:split_index]], X[indices[split_index:]]
+y_train, y_test = y[indices[:split_index]], y[indices[split_index:]]
 
-    loss_derivative = mse.derivative(output,targets)
+# hyperparameters
+lr = 0.01
+iterations = 1000
 
-    mlp.backwards(loss_derivative)
+# MLP
+mlp = MLP(4, [4, 3], [relu, softmax])
+
+losses = []
+
+# training loop
+for i in range(iterations):
+    
+    idx = np.random.randint(len(X_train))
+    inputs, target = X_train[idx].reshape(1, -1), y_train[idx].reshape(1, -1)
+    
+    # forward pass
+    outputs = mlp(inputs)
+
+    # compute loss
+    loss = cce(outputs, target)
+    losses.append(loss)
+
+    # backward pass
+    d_loss = cce.derivative(outputs, target)
+    mlp.backwards(d_loss)
+
+    # update weights
     mlp.update(lr)
+    
+    if i % 100 == 0:
+        print(f'Iteration {i}, Loss: {loss}')
 
-    if _ % 10 == 0 or _ == 1:
-        print(output)
-        print(targets)
-        print(f'loss: {loss}')
+correct = 0
+for inputs, target in zip(X_test, y_test):
+    outputs = mlp(inputs.reshape(1, -1))
+    if np.argmax(outputs) == np.argmax(target):
+        correct += 1
+
+accuracy = correct / len(X_test)
+print(f'Accuracy: {accuracy * 100:.2f}%')
+ 
+# plotting loss
+import matplotlib.pyplot as plt
+
+plt.plot(losses)
+plt.xlabel('Iterations')
+plt.ylabel('Loss')
+plt.title('Training Loss')
+plt.show()
