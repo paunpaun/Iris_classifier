@@ -40,5 +40,3 @@ Average accuracy around 95%.
 
 ![accuracy(terminal)](https://github.com/user-attachments/assets/bf59a062-189d-464c-ab58-2dc96466947a)   
 ![accuracy(plot)](https://github.com/user-attachments/assets/166175b3-a05b-46fd-b6f6-d040a0764d6b)
-
-![image](https://github.com/user-attachments/assets/b175ae69-c919-49f0-823c-dbe9df26739b)
