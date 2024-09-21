@@ -24,7 +24,7 @@ Target: One-hot encoded "class" for the iris species.
 
 
 
-Weights initialization.
+Weights and biases initialization.
 ![image](https://github.com/user-attachments/assets/83171d49-b367-4215-932a-eecf9ed333c3)
 
 80% 20% split for training and testing.
