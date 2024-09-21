@@ -31,12 +31,9 @@ He (Kaiming) Initialization for the weights, effective with ReLU.
 
 ![image](https://github.com/user-attachments/assets/180403da-ce9f-491f-b5e3-c3a3e1f8d20b)
 
-0.01 for learning rate and 1000 total iterations
+0.01 for learning rate and 1000 total iterations gives about 95% accuracy.
 
 ![image](https://github.com/user-attachments/assets/b41f43d5-dbc4-403a-9e22-a2f8eab860b5)
-
-
-Average accuracy around 95%.
 
 ![accuracy(terminal)](https://github.com/user-attachments/assets/bf59a062-189d-464c-ab58-2dc96466947a)   
 ![accuracy(plot)](https://github.com/user-attachments/assets/166175b3-a05b-46fd-b6f6-d040a0764d6b)
