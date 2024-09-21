@@ -24,7 +24,7 @@ Target: One-hot encoded "class" for the iris species.
 
 
 
-He (Kaiming) Initialization for the weights, effective with ReLU.
+Weights initialization.
 ![image](https://github.com/user-attachments/assets/83171d49-b367-4215-932a-eecf9ed333c3)
 
 80% 20% split for training and testing.
