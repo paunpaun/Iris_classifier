@@ -1,6 +1,6 @@
 # Iris Classifier (simple MLP model, only Numpy) 
 
-Structure: 4 inputs, 1 hidden layer with 4 neurons, output layer with 3 neurons.
+Structure: 4 inputs, 1 hidden layer with 4 neurons, output layer with 3 neurons. (expandable)
 
 Inputs: "sepal_length", "sepal_width", "petal_length", "petal_width"
 
