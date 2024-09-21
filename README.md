@@ -31,7 +31,7 @@ He (Kaiming) Initialization for the weights, effective with ReLU.
 
 ![image](https://github.com/user-attachments/assets/180403da-ce9f-491f-b5e3-c3a3e1f8d20b)
 
-0.01 for learning rate and 1000 total iterations (not optimal)
+0.01 for learning rate and 1000 total iterations
 
 ![image](https://github.com/user-attachments/assets/b41f43d5-dbc4-403a-9e22-a2f8eab860b5)
 
